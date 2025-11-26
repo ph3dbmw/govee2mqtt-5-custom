@@ -15,7 +15,7 @@ use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::time::{sleep, Duration};
 
-pub const POLL_INTERVAL: Lazy<chrono::Duration> = Lazy::new(|| chrono::Duration::seconds(900));
+pub const POLL_INTERVAL: Lazy<chrono::Duration> = Lazy::new(|| chrono::Duration::seconds(300));
 
 #[derive(clap::Parser, Debug)]
 pub struct ServeCommand {
@@ -196,7 +196,7 @@ impl ServeCommand {
             let state = state.clone();
             tokio::spawn(async move {
                 loop {
-                    sleep(Duration::from_secs(600)).await;
+                    sleep(Duration::from_secs(300)).await;
                     if let Err(err) = enumerate_devices_via_platform_api(state.clone(), None).await
                     {
                         log::error!("Error during periodic platform API discovery: {err:#}");
@@ -226,7 +226,7 @@ impl ServeCommand {
             let args = args.undoc_args.clone();
             tokio::spawn(async move {
                 loop {
-                    sleep(Duration::from_secs(600)).await;
+                    sleep(Duration::from_secs(300)).await;
                     if let Err(err) =
                         enumerate_devices_via_undo_api(state.clone(), None, &args).await
                     {
