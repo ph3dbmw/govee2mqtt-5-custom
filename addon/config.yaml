@@ -1,5 +1,5 @@
 name: Govee to MQTT Bridge (5 minute polling)
-version: "2025.11.25-ph3dbmw"
+version: "2025.710.420"
 slug: govee2mqtt-custom
 description: Control Govee Devices
 url: https://github.com/ph3dbmw/govee2mqtt-5-custom
