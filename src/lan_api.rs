@@ -17,12 +17,12 @@ use tokio::time::Instant;
 // <https://app-h5.govee.com/user-manual/wlan-guide>
 
 /// The port on which govee devices listen for scan requests
-const SCAN_PORT: u16 = 4001;
+const SCAN_PORT: u16 = 4101;
 /// The port on which a client needs to listen to receive responses
 /// from govee devices
-const LISTEN_PORT: u16 = 4002;
+const LISTEN_PORT: u16 = 4102;
 /// The port on which govee devices listen for control requests
-const CMD_PORT: u16 = 4003;
+const CMD_PORT: u16 = 4103;
 /// The multicast group of which govee LAN-API enabled devices are members
 const MULTICAST: IpAddr = IpAddr::V4(Ipv4Addr::new(239, 255, 255, 250));
 
@@ -455,7 +455,7 @@ async fn lan_disco(
     inner: Arc<ClientInner>,
 ) -> anyhow::Result<Receiver<LanDevice>> {
     let listen = UdpSocket::bind(("0.0.0.0", LISTEN_PORT)).await.context(
-        "Cannot bind to UDP Port 4002, which is required \
+        "Cannot bind to UDP Port 4102, which is required \
         for the Govee LAN API to function. Most likely cause is that you \
         are running another integration (perhaps `Govee LAN Control`, or \
         `homebridge-govee`) that is already bound to that port. \
