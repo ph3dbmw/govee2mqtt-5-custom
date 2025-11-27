@@ -3,7 +3,7 @@ image: ghcr.io/ph3dbmw/govee2mqtt-{arch}
 version: "2025.11.25-ph3dbmw"
 slug: govee2mqtt-custom
 description: Control Govee Devices
-url: https://github.com/ph3dbmw/govee2mqtt-5
+url: https://github.com/ph3dbmw/govee2mqtt-5-custom
 arch:
   - amd64
   - aarch64
