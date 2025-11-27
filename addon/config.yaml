@@ -1,5 +1,4 @@
 name: Govee to MQTT Bridge (5 minute polling)
-image: ghcr.io/ph3dbmw/govee2mqtt-{arch}
 version: "2025.11.25-ph3dbmw"
 slug: govee2mqtt-custom
 description: Control Govee Devices
