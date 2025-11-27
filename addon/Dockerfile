@@ -3,8 +3,8 @@ FROM $BUILD_FROM
 
 # Copy pre-built binary and assets
 COPY bin/govee /app/govee
-COPY ../assets /app/assets/
-COPY ../AmazonRootCA1.pem /app/
+COPY assets /app/assets/
+COPY AmazonRootCA1.pem /app/
 
 # Setup runtime
 COPY run.sh /run.sh
