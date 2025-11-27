@@ -31,7 +31,7 @@ fn open_cache() -> anyhow::Result<Arc<Cache>> {
         // We have low cardinality and can be pretty relaxed
         CacheConfig {
             flush_gc_ratio: 1024,
-            flush_interval: Duration::from_secs(900),
+            flush_interval: Duration::from_secs(300),
             max_ttl: None,
         },
         conn,

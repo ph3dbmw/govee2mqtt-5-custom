@@ -30,7 +30,7 @@ impl RestApiClient {
             CacheGetOptions {
                 topic: "rest-api",
                 key: "device-list",
-                soft_ttl: Duration::from_secs(900),
+                soft_ttl: Duration::from_secs(300),
                 hard_ttl: ONE_WEEK,
                 negative_ttl: Duration::from_secs(60),
                 allow_stale: true,
