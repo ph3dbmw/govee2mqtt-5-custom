@@ -14,7 +14,7 @@ services:
 
 apparmor: true
 
-webui: http://[HOST]:[PORT:8056]/assets/index.html
+webui: http://[HOST]:[PORT:8057]/assets/index.html
 #ingress: true
 #ingress_port: 8056
 
