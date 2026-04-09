@@ -2,7 +2,7 @@ ARG BUILD_FROM
 FROM $BUILD_FROM
 
 # Copy pre-built binary and assets
-COPY /addon/bin/govee /app/govee
+COPY addon/bin/govee /app/govee
 COPY assets /app/assets/
 COPY AmazonRootCA1.pem /app/
 
