@@ -207,6 +207,12 @@ impl GoveeUndocumentedApi {
                 Method::POST,
                 "https://app2.govee.com/account/rest/account/v1/login",
             )
+            .header("appVersion", APP_VERSION)
+            .header("clientId", &self.client_id)
+            .header("clientType", "1")
+            .header("iotVersion", "0")
+            .header("timestamp", ms_timestamp())
+            .header("User-Agent", user_agent())
             .json(&serde_json::json!({
                 "email": self.email,
                 "password": self.password,
