@@ -38,7 +38,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - name: Docker meta
         if: ${{ github.event_name != 'pull_request' }}
         id: meta
@@ -60,9 +60,9 @@ jobs:
           registry: https://ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: "Install Rust"
+      - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
-      - name: "Install cross from Cargo"
+      - name: Install cross from Cargo
         uses: baptiste0928/cargo-install@v3
         with:
           crate: "cross"
@@ -97,7 +97,7 @@ jobs:
           echo "DIGEST_NAME=$(echo ${{ matrix.platform }} | sed 's,/,-,g')" >> $GITHUB_OUTPUT
       - name: Upload digest
         if: ${{ github.event_name != 'pull_request' }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v4
         with:
           name: digest-${{ steps.digest.outputs.DIGEST_NAME }}
           path: /tmp/digests/*
@@ -114,7 +114,7 @@ jobs:
       packages: write
     steps:
       - name: Download digests
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v4
         with:
           pattern: digest-*
           merge-multiple: true
@@ -148,6 +148,7 @@ jobs:
       - name: Inspect image
         run: |
           docker buildx imagetools inspect ${{ env.IMAGE }}:${{ steps.meta.outputs.version }}
+
   addon:
     if: ${{ github.event_name == 'push' && github.ref_type == 'tag' }}
     runs-on: ubuntu-latest
@@ -158,7 +159,7 @@ jobs:
       id-token: write
       packages: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
