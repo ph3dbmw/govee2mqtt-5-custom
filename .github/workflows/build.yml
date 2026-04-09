@@ -68,6 +68,13 @@ jobs:
           crate: "cross"
       - name: Build executable
         run: ./scripts/build-cross.sh ${{ matrix.platform }}
+        - name: Upload binary
+        if: matrix.platform == 'linux/amd64'
+        uses: actions/upload-artifact@v4
+        with:
+          name: govee-binary
+          path: docker-target/linux/amd64/govee
+          retention-days: 7
       - name: Build No Push
         if: ${{ github.event_name == 'pull_request' }}
         uses: docker/build-push-action@v6
